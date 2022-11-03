@@ -1,0 +1,9 @@
+{
+  "productos": [
+    {
+      "name": "Rib Eye",
+      "price": 300,
+      "id": 1
+    }
+  ]
+}
