@@ -38,7 +38,7 @@ const NewProduct = () => {
         // crar nuevo producto
         addProduct( {
             name,
-            price
+            price,
         } );
         
         //redireccionar a inicio
@@ -91,7 +91,6 @@ const NewProduct = () => {
         </div>
     </div>
 </div>
-                    
 )
 }
 

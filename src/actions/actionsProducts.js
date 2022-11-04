@@ -4,7 +4,10 @@ import {
     ADD_PRODUCT_ERROR,
     START_PRODUCTS_DOWNLOAD,
     DOWNLOAD_PRODUCTS_SUCCESS,
-    DOWNLOAD_PRODUCTS_ERROR
+    DOWNLOAD_PRODUCTS_ERROR,
+    GET_PRODUCT_DELETE,
+    DELETE_PRODUCT_SUCCESS,
+    DELETE_PRODUCT_ERROR
 } from '../types';
 
 import axiosClient from '../config/axios';
@@ -17,9 +20,9 @@ export function addNewProductAction(product) {
 
         try {
             // insertar la API
-            await axiosClient.post( '/productos', product )
+            const response = await axiosClient.post( '/productos', product )
             // si todo sale bien, actualizar el state
-            dispatch( addProductSuccess( product ) );
+            dispatch( addProductSuccess( response.data ) );
 
             //Alerta de success
             Swal.fire(
@@ -89,4 +92,27 @@ const downloadProductsSuccess = products => ( {
 const downloadProductsError = () => ( {
     type: DOWNLOAD_PRODUCTS_ERROR,
     payload: true,
+} )
+
+// selecciona y elimina el producto
+export function deleteProductAction(id) {
+    return async ( dispatch ) => {
+        dispatch( getProductDelete(id) );
+        
+        try {
+            await axiosClient.delete(`/productos/${id}`);
+            dispatch( deleteProductSuccess() );
+        } catch (error) {
+        console.log(id)
+        }
+    }
+}
+
+const getProductDelete = id => ( {
+    type: GET_PRODUCT_DELETE,
+    payload: id
+} )
+
+const deleteProductSuccess = () => ( {
+    type: DELETE_PRODUCT_SUCCESS,
 })
