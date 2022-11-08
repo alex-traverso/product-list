@@ -1,14 +1,14 @@
 {
   "productos": [
     {
-      "id": 1,
-      "name": "Jugo de Zanahoria",
-      "price": "31111"
+      "name": "Alex",
+      "price": 500,
+      "id": 2
     },
     {
-      "name": "3131",
-      "price": 3131,
-      "id": 4
+      "name": "Rib Eye",
+      "price": 300,
+      "id": 3
     }
   ]
 }
