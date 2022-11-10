@@ -9,7 +9,6 @@ import {
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_ERROR,
     GET_EDIT_PRODUCT,
-    START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
 } from '../types';
@@ -39,6 +38,7 @@ export default function reducerProducts ( state = initialState, action ) {
         case ADD_PRODUCT_ERROR:
         case DOWNLOAD_PRODUCTS_ERROR:
         case DELETE_PRODUCT_ERROR:
+        case EDIT_PRODUCT_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -66,6 +66,12 @@ export default function reducerProducts ( state = initialState, action ) {
             return {
                 ...state,
                 editProduct: action.payload
+            }
+        case EDIT_PRODUCT_SUCCESS:
+            return {
+                ...state, 
+                editProduct: null,
+                products: state.products.map( product => product.id === action.payload.id ? (product.payload = action.payload) : product)
             }
         
         default:

@@ -1,14 +1,19 @@
 {
   "productos": [
     {
-      "name": "Alex",
-      "price": 500,
+      "name": "Alex Traverso",
+      "price": "600",
       "id": 2
     },
     {
       "name": "Rib Eye",
-      "price": 300,
+      "price": "300",
       "id": 3
+    },
+    {
+      "name": "Rib Eye",
+      "price": 51,
+      "id": 6
     }
   ]
 }

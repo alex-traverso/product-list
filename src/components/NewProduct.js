@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
     // Actions de redux
 import { addNewProductAction } from '../actions/actionsProducts';
+import { displayAlertAction, hideAlertAction } from '../actions/actionsAlert';
 
 const NewProduct = () => {
     
@@ -20,7 +21,8 @@ const NewProduct = () => {
 
     // acceder al state del store
     const loading = useSelector( ( state ) => state.products.loading );
-    const error = useSelector( ( state ) => state.products.error);
+    const error = useSelector( ( state ) => state.products.error );
+    const alert = useSelector( ( state ) => state.alert.alert );
 
     // mandar a llamar el action de product action
     const addProduct = (product) => dispatch(addNewProductAction (product));
@@ -30,11 +32,19 @@ const NewProduct = () => {
         e.preventDefault();
 
         // validar formulario
-        if (name.trim() === "" || price <= 0) {
+        if ( name.trim() === "" || price <= 0 ) {
+            
+            const response = {
+                message: "Ambos campos son obligatorios",
+                class: "alert alert-danger text-center text-uppercase p3"
+            }
+            dispatch(displayAlertAction( response ));
             return;
         }
 
         // si no hay errores
+        dispatch( hideAlertAction() );
+        
         // crar nuevo producto
         addProduct( {
             name,
@@ -53,6 +63,7 @@ const NewProduct = () => {
                     <div className='card-body'>
                         <h2 className="text-center mb-4 font-weight-bold">Agregar nuevo Producto</h2>
 
+                        {alert ? <p className={alert.class}>{alert.message}</p> : null}
                 <form
                 onSubmit={submitNewProduct}
                 >
