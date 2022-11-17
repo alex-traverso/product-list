@@ -17,8 +17,9 @@ body {
 
 h1 a {
   font-size: 1.8rem;
+  color: white;
 }
-h1 a.text-light:hover {
+h1 a.title-nav:hover {
   color: white!important;
   text-decoration: none!important;
 }
