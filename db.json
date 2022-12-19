@@ -2,8 +2,13 @@
   "productos": [
     {
       "name": "Rib Eye",
-      "price": "300",
+      "price": "500",
       "id": 3
+    },
+    {
+      "name": "Juice",
+      "price": 100,
+      "id": 4
     }
   ]
 }
