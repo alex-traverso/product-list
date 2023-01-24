@@ -1,9 +1,9 @@
 {
   "productos": [
     {
-      "name": "Rib Eye ",
-      "price": "500",
-      "id": 3
+      "name": "Taza",
+      "price": 100,
+      "id": 1
     }
   ]
 }
